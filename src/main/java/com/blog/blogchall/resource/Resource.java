@@ -1,11 +1,13 @@
 package com.blog.blogchall.resource;
 
 import com.blog.blogchall.domain.Post;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.data.domain.Pageable;
 import java.util.Collection;
 
 public interface Resource <T>{

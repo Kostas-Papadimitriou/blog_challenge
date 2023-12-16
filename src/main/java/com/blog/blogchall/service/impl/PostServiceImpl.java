@@ -4,8 +4,10 @@ import com.blog.blogchall.domain.Post;
 import com.blog.blogchall.repository.PostRepository;
 import com.blog.blogchall.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Pageable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +18,7 @@ public class PostServiceImpl implements PostService {
     private PostRepository postRepository;
 
     @Override
-    public Collection<Post> findAll() {
+    public Collection<Post> findAll( ) {
         return postRepository.findAll();
     }
 
