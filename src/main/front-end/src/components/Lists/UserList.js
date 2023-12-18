@@ -12,10 +12,12 @@ const UserList = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user);
   const [show, setShow] = useState(false);
+  const [userList, setUserList] = useState([]);
 
   useEffect(() => {
     dispatch(fetchUsers());
-  }, [dispatch]);
+    setUserList(userData);
+  }, []);
   //   const deleteUser = (id) => {
   //     UserService.deleteUser(id)
   //       .then((response) => {
@@ -70,7 +72,7 @@ const UserList = () => {
                       <td colSpan="4">Υπάρχουν τόσοι χρήστες</td>
                     </tr>
                   ) : (
-                    userData.map((user) => (
+                    userData.users.map((user) => (
                       <tr align="center" key={user.id}>
                         <td>{user.id}</td>
                         <td>{user.first_name}</td>

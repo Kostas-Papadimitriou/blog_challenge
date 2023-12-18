@@ -5,7 +5,7 @@ import {
 } from "./UserType";
 
 const initialState = {
-  user: [],
+  users: [],
   error: "",
 };
 

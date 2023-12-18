@@ -9,11 +9,14 @@ import UserService from "../../Services/UserService";
 export const fetchUsers = () => {
   return (dispatch) => {
     dispatch(fetchUserRequest());
-    UserService.getAllUsers().then((response) => {
-      dispatch(fetchUserSuccess(response.data)).catch((error) => {
+    axios
+      .get("http://localhost:8080/rest/users")
+      .then((response) => {
+        dispatch(fetchUserSuccess(response.data));
+      })
+      .catch((error) => {
         dispatch(fetchUserFailure(error.message));
       });
-    });
   };
 };
 
@@ -22,13 +25,13 @@ const fetchUserRequest = () => {
     type: FETCH_USER_REQUEST,
   };
 };
-const fetchUserSuccess = () => {
+const fetchUserSuccess = (users) => {
   return {
     type: FETCH_USER_SUCCESS,
     payload: users,
   };
 };
-const fetchUserFailure = () => {
+const fetchUserFailure = (error) => {
   return {
     type: FETCH_USER_FAILURE,
     payload: error,
