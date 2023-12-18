@@ -10,6 +10,8 @@ import Post from "./components/Post";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UserList from "./components/Lists/UserList";
 import WelcomePosts from "./components/DefaultUsageComponents/WelcomePosts";
+import { Provider } from "react-redux";
+import store from "./components/store/store";
 
 function App() {
   const marginTop = {
@@ -28,7 +30,14 @@ function App() {
               <Route path="/add" element={<Post />} />
               <Route path="/edit/:id" element={<Post />} />
               <Route path="/list" element={<PostList />} />
-              <Route path="/userlist" element={<UserList />} />
+              <Route
+                path="/userlist"
+                element={
+                  <Provider store={store}>
+                    <UserList />
+                  </Provider>
+                }
+              />
             </Routes>
           </Col>
         </Row>
